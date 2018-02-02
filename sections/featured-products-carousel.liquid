@@ -1,0 +1,78 @@
+<style type="text/css">
+	.productCarousel {
+		background: url({{ section.settings.carousel_bg | img_url: 'master' }}) no-repeat;
+		background-size: contain;
+		background-position: {{ section.settings.carousel_position }};
+	}
+</style>
+
+{% if section.settings.products_carousel != blank %}
+	<div class="productCarousel">
+		{% assign collection = section.settings.products_carousel %}
+		<div class="page-width">
+			<div class="colTitle title">{{ collections[collection].title }}</div>
+			<div class="grid grid--uniform grid--uniform-collection{% if collection.products_count > 0 %} grid--view-items{% endif %}">
+				<div class="product-carousel owlCollection owl-carousel owl-theme">
+			        {% for product in collections[collection].products limit:10 %}
+			          <div class="grid__item grid__item-collection medium-up--one-whole">
+			            {% include 'product-card-grid', max_height: 250 %}
+			          </div>
+			        {% endfor %}
+			    </div>
+		    </div>
+			{% if section.settings.products_carousel_linktext != blank %}
+				<div class="colBtn">
+					<a href="{{ collections[collection].url }}" class="btn">{{ section.settings.products_carousel_linktext }}</a>
+				</div>
+			{% endif %}
+		</div>
+	</div>
+{% endif %}
+
+
+{% schema %}
+
+	{
+		"name": "Products carousel",
+		"settings": [
+			{
+				"type": "collection",
+				"id": "products_carousel",
+				"label": "Collection to display"
+			},
+			{
+				"type": "text",
+				"id": "products_carousel_linktext",
+				"label": "Link text"
+			},
+			{
+				"type": "image_picker",
+				"id": "carousel_bg",
+				"label": "Background image"
+			},
+			{
+				"type": "select",
+				"id": "carousel_position",
+				"label": "Background position",
+				"default": "left",
+				"options": [
+					{
+						"value": "left",
+						"label": "Left"
+					},
+					{
+						"value": "right",
+						"label": "Right"
+					}
+				]
+			}
+		],
+		"presets": [
+			{
+				"name": "Products carousel",
+				"category": "Product"
+			}
+		]
+	}
+
+{% endschema %}

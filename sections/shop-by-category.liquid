@@ -1,0 +1,105 @@
+<style type="text/css">
+	.shopByCategory {
+		background: url({{ section.settings.shop_category_bg | img_url: 'master' }}) no-repeat;
+		background-position: {{ section.settings.shop_category_position }};
+	}
+</style>
+
+<div class="shopByCategory">
+	{% assign shop_category_3a = section.settings.shop_category_3_a %}
+	{% assign shop_category_3b = section.settings.shop_category_3_b %}
+	{% assign shop_category_3c = section.settings.shop_category_3_c %}
+	{% assign shop_category_4a = section.settings.shop_category_4_a %}
+	{% assign shop_category_4b = section.settings.shop_category_4_b %}
+	{% assign shop_category_4c = section.settings.shop_category_4_c %}
+	{% assign shop_category_4d = section.settings.shop_category_4_d %}
+	<div class="page-width">
+		{% include 'shop-by-category' %}
+	</div>
+</div>
+
+
+{% schema %}
+
+	{
+		"name": "Shop by category",
+		"settings": [
+			{
+				"type": "text",
+		        "id": "shop_category_title",
+		        "label": "Title"
+			},
+			{
+				"type": "header",
+        		"content": "First line (3 Categories)"
+			},
+			{
+				"type": "collection",
+		        "id": "shop_category_3_a",
+		        "label": "Category"
+			},
+			{
+				"type": "collection",
+		        "id": "shop_category_3_b",
+		        "label": "Category"
+			},
+			{
+				"type": "collection",
+		        "id": "shop_category_3_c",
+		        "label": "Category"
+			},
+			{
+				"type": "header",
+        		"content": "Second line (4 Categories)"
+			},
+			{
+				"type": "collection",
+		        "id": "shop_category_4_a",
+		        "label": "Category"
+			},
+			{
+				"type": "collection",
+		        "id": "shop_category_4_b",
+		        "label": "Category"
+			},
+			{
+				"type": "collection",
+		        "id": "shop_category_4_c",
+		        "label": "Category"
+			},
+			{
+				"type": "collection",
+		        "id": "shop_category_4_d",
+		        "label": "Category"
+			},
+			{
+				"type": "image_picker",
+				"id": "shop_category_bg",
+				"label": "Background image"
+			},
+			{
+				"type": "select",
+				"id": "shop_category_position",
+				"default": "left",
+				"label": "Background position",
+				"options": [
+					{
+						"value": "left",
+						"label": "Left"
+					},
+					{
+						"value": "right",
+						"label": "Right"
+					}
+				]
+			}
+		],
+		"presets": [
+			{
+				"name": "Shop by category",
+				"category": "Collection"
+			}
+		]
+	}
+
+{% endschema %}

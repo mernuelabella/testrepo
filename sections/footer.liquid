@@ -1,0 +1,253 @@
+{% if section.settings.footer_newsletter_enable %}
+
+  <style type="text/css">
+    .newsletter {
+      background-color: {{ section.settings.newsletter_bg }};
+    }
+    .newsletter .title {
+      color: {{ section.settings.newsletter_textcolor }};
+    }
+  </style>
+
+  <div class="newsletter">
+    <div class="page-width">
+      <div class="one-whole">
+        <div class="title">
+          {{ section.settings.newsletter_title }}
+        </div>
+      </div>
+      <div class="one-whole">
+        {% include 'newsletter-form' %}
+      </div>
+    </div>
+  </div>
+
+{% endif %}
+
+<footer class="site-footer" role="contentinfo">
+  <div class="page-width">
+    <div class="footerLinks">
+      <div class="grid">
+
+        {% if section.settings.footer_contact_enable %}
+        <div class="grid__item medium-up--one-quarter">
+          <div class="footerLinks1">
+            <div class="title">Contact Us</div>
+            <p>
+              <ul>
+                <li>
+                  {{ settings.con_address1 }}
+                </li>
+                <li>
+                  {{ settings.con_address2 }}
+                </li>
+              </ul>
+            </p>
+            <ul>
+              {% if settings.con_tel != blank %}
+                <li>
+                  Phone: <a href="tel:{{ settings.con_tel | replace: '-', '.' }}">{{ settings.con_tel }}</a>
+                </li>
+              {% endif %}
+              {% if settings.con_fax != blank %}
+                <li>
+                  Fax: <a href="tel:{{ settings.con_fax | replace: '-', '.' }}">{{ settings.con_fax }}</a>
+                </li>
+              {% endif %}
+              {% if settings.con_email != blank %}
+                <li>
+                  Email: <a href="mailto:{{ settings.con_email }}">{{ settings.con_email }}</a>
+                </li>
+              {% endif %}
+              {% if settings.con_email2 != blank %}
+                <li>
+                  Email: <a href="mailto:{{ settings.con_email2 }}">{{ settings.con_email2 }}</a>
+                </li>
+              {% endif %}
+              {% if settings.con_email3 != blank %}
+                <li>
+                  Email: <a href="mailto:{{ settings.con_email3 }}">{{ settings.con_email3 }}</a>
+                </li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+        {% endif %}
+
+        {% if section.settings.footer_linklist_1 != blank or section.settings.footer_linklist_2 != blank or section.settings.footer_linklist_3 != blank %}
+        <div class="grid__item medium-up--one-half footerMidLinks">
+
+          {%- assign footer_linklist_1 = section.settings.footer_linklist_1 -%}
+          {% if linklists[footer_linklist_1].links.size > 0 %}
+          <div class="one-third left">
+            <div class="title">Shop</div>
+            <ul>
+              {% for link in linklists[footer_linklist_1].links %}
+                <li>
+                  <a href="{{ link.url }}">{{ link.title }}</a>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+          {% endif %}
+
+          {%- assign footer_linklist_2 = section.settings.footer_linklist_2 -%}
+          {% if linklists[footer_linklist_2].links.size > 0 %}
+          <div class="one-third left">
+            <div class="title">Menu</div>
+            <ul>
+              {% for link in linklists[footer_linklist_2].links %}
+                <li>
+                  <a href="{{ link.url }}">{{ link.title }}</a>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+          {% endif %}
+
+          {%- assign footer_linklist_3 = section.settings.footer_linklist_3 -%}
+          {% if linklists[footer_linklist_3].links.size > 0 %}
+          <div class="one-third left">
+            <div class="title">Information</div>
+            <ul>
+              {% for link in linklists[footer_linklist_3].links %}
+                <li>
+                  <a href="{{ link.url }}">{{ link.title }}</a>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+          {% endif %}
+
+        </div>
+        {% endif %}
+
+        {% if section.settings.footer_social_enable %}
+        <div class="grid__item medium-up--one-quarter">
+          <div class="socialShare">
+            <div class="title">Follow Us</div>
+            <ul>
+              {% if settings.social_facebook_link != blank %}
+                <li>
+                  <a href="{{ settings.social_facebook_link }}">{{ 'icon-fb.png' | asset_url | img_tag }}</a>
+                </li>
+              {% endif %}
+              {% if settings.social_gplus_link != blank %}
+                <li>
+                  <a href="{{ settings.social_gplus_link }}">{{ 'icon-gplus.png' | asset_url | img_tag }}</a>
+                </li>
+              {% endif %}
+              {% if settings.social_pinterest_link != blank %}
+                <li>
+                  <a href="{{ settings.social_pinterest_link }}">{{ 'icon-pinterest.png' | asset_url | img_tag }}</a>
+                </li>
+              {% endif %}
+              {% if settings.social_twitter_link != blank %}
+                <li>
+                  <a href="{{ settings.social_twitter_link }}">{{ 'icon-twitter.png' | asset_url | img_tag }}</a>
+                </li>
+              {% endif %}
+              {% if settings.social_instagram_link != blank %}
+                <li>
+                  <a href="{{ settings.social_instagram_link }}">{{ 'icon-instagram.png' | asset_url | img_tag }}</a>
+                </li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+        {% endif %}
+
+      </div>
+    </div>
+    {% if section.settings.footer_copyright != blank or section.settings.footer_poweredby != blank %}
+    <div class="footerCopy">
+      <div class="grid">
+        <div class="grid__item medium-up--one-half">
+          {{ section.settings.footer_copyright }}
+        </div>
+        <div class="grid__item medium-up--one-half text-right">
+          {{ section.settings.footer_poweredby }}
+        </div>
+      </div>
+    </div>
+    {% endif %}
+  </div>
+</footer>
+
+{% schema %}
+  {
+    "name": "Footer",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Newsletter"
+      },
+      {
+        "type": "checkbox",
+        "id": "footer_newsletter_enable",
+        "label": "Show newsletter signup",
+        "default": false
+      },
+      {
+        "type": "text",
+        "id": "newsletter_title",
+        "label": "Title"
+      },
+      {
+        "type": "color",
+        "id": "newsletter_bg",
+        "label": "Background color",
+        "default": "#fff"
+      },
+      {
+        "type": "color",
+        "id": "newsletter_textcolor",
+        "label": "Text color",
+        "default": "#000"
+      },
+      {
+        "type": "header",
+        "content": "Footer links"
+      },
+      {
+        "type": "checkbox",
+        "id": "footer_contact_enable",
+        "label": "Enable contact information"
+      },
+      {
+        "type": "link_list",
+        "id": "footer_linklist_1",
+        "label": "Link 1"
+      },
+      {
+        "type": "link_list",
+        "id": "footer_linklist_2",
+        "label": "Link 2"
+      },
+      {
+        "type": "link_list",
+        "id": "footer_linklist_3",
+        "label": "Link 3"
+      },
+      {
+        "type": "checkbox",
+        "id": "footer_social_enable",
+        "label": "Enable social media links"
+      },
+      {
+        "type": "header",
+        "content": "Copyright"
+      },
+      {
+        "type": "textarea",
+        "id": "footer_copyright",
+        "label": "Copyright information"
+      },
+      {
+        "type": "textarea",
+        "id": "footer_poweredby",
+        "label": "Powered by"
+      }
+    ]
+  }
+{% endschema %}

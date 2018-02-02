@@ -1,0 +1,132 @@
+<div class="colTitle title">{{ section.settings.shop_category_title }}</div>
+<div class="grid grid--uniform grid--uniform-collection">
+	{% if shop_category_3a != blank %}
+		<div class="grid__item medium-up--one-third grid__item-collection">
+			<div class="homeShopCatInner">
+				<a href="{{ collections[shop_category_3a].url }}">
+					<div class="homeShopCatImg">
+						{% if collections[shop_category_3a].image %}
+					       	{{ collections[shop_category_3a].image.src | img_url: 'original' | img_tag }}
+					    {% else %}
+					    	{{ collections[shop_category_3a].products.first.featured_image | img_url: 'original' | img_tag }}
+						{% endif %}
+					</div>
+					<div class="homeShopCatTitle">
+						{{ collections[shop_category_3a].title }}
+					</div>
+				</a>
+			</div>
+		</div>
+	{% endif %}
+	{% if shop_category_3b != blank %}
+		<div class="grid__item medium-up--one-third grid__item-collection">
+			<div class="homeShopCatInner">
+				<a href="{{ collections[shop_category_3b].url }}">
+					<div class="homeShopCatImg">
+						{% if collections[shop_category_3b].image %}
+					       	{{ collections[shop_category_3b].image.src | img_url: 'original' | img_tag }}
+					    {% else %}
+					    	{{ collections[shop_category_3b].products.first.featured_image | img_url: 'original' | img_tag }}
+						{% endif %}
+					</div>
+					<div class="homeShopCatTitle">
+						{{ collections[shop_category_3b].title }}
+					</div>
+				</a>
+			</div>
+		</div>
+	{% endif %}
+	{% if shop_category_3c != blank %}
+		<div class="grid__item medium-up--one-third grid__item-collection">
+			<div class="homeShopCatInner">
+				<a href="{{ collections[shop_category_3c].url }}">
+					<div class="homeShopCatImg">
+						{% if collections[shop_category_3c].image %}
+					       	{{ collections[shop_category_3c].image.src | img_url: 'original' | img_tag }}
+					    {% else %}
+					    	{{ collections[shop_category_3c].products.first.featured_image | img_url: 'original' | img_tag }}
+						{% endif %}
+					</div>
+					<div class="homeShopCatTitle">
+						{{ collections[shop_category_3c].title }}
+					</div>
+				</a>
+			</div>
+		</div>
+	{% endif %}
+</div>
+
+<div class="grid grid--uniform grid--uniform-collection homeShopCatOuter2">
+	{% if shop_category_4a != blank %}
+		<div class="grid__item medium-up--one-quarter grid__item-collection">
+			<div class="homeShopCatInner">
+				<a href="{{ collections[shop_category_4a].url }}">
+					<div class="homeShopCatImg">
+						{% if collections[shop_category_4a].image %}
+					       	{{ collections[shop_category_4a].image.src | img_url: 'original' | img_tag }}
+					    {% else %}
+					    	{{ collections[shop_category_4a].products.first.featured_image | img_url: 'original' | img_tag }}
+						{% endif %}
+					</div>
+					<div class="homeShopCatTitle">
+						{{ collections[shop_category_4a].title }}
+					</div>
+				</a>
+			</div>
+		</div>
+	{% endif %}
+	{% if shop_category_4b != blank %}
+		<div class="grid__item medium-up--one-quarter grid__item-collection">
+			<div class="homeShopCatInner">
+				<a href="{{ collections[shop_category_4b].url }}">
+					<div class="homeShopCatImg">
+						{% if collections[shop_category_4b].image %}
+					       	{{ collections[shop_category_4b].image.src | img_url: 'original' | img_tag }}
+					    {% else %}
+					    	{{ collections[shop_category_4b].products.first.featured_image | img_url: 'original' | img_tag }}
+						{% endif %}
+					</div>
+					<div class="homeShopCatTitle">
+						{{ collections[shop_category_4b].title }}
+					</div>
+				</a>
+			</div>
+		</div>
+	{% endif %}
+	{% if shop_category_4c != blank %}
+		<div class="grid__item medium-up--one-quarter grid__item-collection">
+			<div class="homeShopCatInner">
+				<a href="{{ collections[shop_category_4c].url }}">
+					<div class="homeShopCatImg">
+						{% if collections[shop_category_4c].image %}
+					       	{{ collections[shop_category_4c].image.src | img_url: 'original' | img_tag }}
+					    {% else %}
+					    	{{ collections[shop_category_4c].products.first.featured_image | img_url: 'original' | img_tag }}
+						{% endif %}
+					</div>
+					<div class="homeShopCatTitle">
+						{{ collections[shop_category_4c].title }}
+					</div>
+				</a>
+			</div>
+		</div>
+	{% endif %}
+	{% if shop_category_4d != blank %}
+		<div class="grid__item medium-up--one-quarter grid__item-collection">
+			<div class="homeShopCatInner">
+				<a href="{{ collections[shop_category_4d].url }}">
+					<div class="homeShopCatImg">
+						{% if collections[shop_category_4d].image %}
+					       	{{ collections[shop_category_4d].image.src | img_url: 'original' | img_tag }}
+					    {% else %}
+					    	{{ collections[shop_category_4d].products.first.featured_image | img_url: 'original' | img_tag }}
+						{% endif %}
+					</div>
+					<div class="homeShopCatTitle">
+						{{ collections[shop_category_4d].title }}
+					</div>
+				</a>
+			</div>
+		</div>
+	{% endif %}
+</div>
